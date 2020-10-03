@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <diskStore path="D:/Workspace/Eclipse/Java/Hibernate/WebContent/cache"/>
+    <defaultCache maxElementsInMemory="200" eternal="false"
+                  timeToIdleSeconds="50" timeToLiveSeconds="60" overflowToDisk="true"/>
+
+    <cache name="com.dbs.hibernate.cache.ehcache.Student"
+           maxElementsInMemory="200" eternal="false" timeToIdleSeconds="50"
+           timeToLiveSeconds="60" overflowToDisk="true"/>
+
+</ehcache>

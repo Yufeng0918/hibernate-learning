@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dbs.hibernate.mapping.list.Team" table="team">
+        <id name="id" column="id" type="string">
+            <generator class="uuid"></generator>
+        </id>
+        <property name="teamName" column="teamName" type="string"></property>
+        <list name="students" table="student" cascade="all">
+            <key column="team_id"></key>
+            <index column="index_"></index>
+            <one-to-many class="com.dbs.hibernate.mapping.list.Student"/>
+        </list>
+    </class>
+</hibernate-mapping>

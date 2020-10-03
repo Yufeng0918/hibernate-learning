@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!-- Hibernate file-based configuration document.
+
+
+
+An instance of this document contains property settings and references
+to mapping files for a number of SessionFactory instances to be listed
+in JNDI.
+
+-->
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!-- <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property> -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+        </property>
+
+        <!-- Connection Pool -->
+        <property name="hibernate.c3p0.min_size">10</property>
+        <property name="hibernate.c3p0.max_size">40</property>
+        <property name="hibernate.c3p0.timeout">200</property>
+        <property name="hibernate.c3p0.max_statements">30</property>
+        <property name="hibernate.c3p0.idle_test_period">100</property>
+
+
+        <!--
+        <mapping resource="Person.hbm.xml" /> <mapping resource="People.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2many/Customer.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2many/Order.hbm.xml" />
+            <mapping resource="com/dbs/hibernate/mapping/recursive/Category.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/primarykey/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/primarykey/IdCard.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/foreignkey/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/foreignkey/IdCard.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/team/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/team/IdCard.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/one2one/team/Team.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/many2many/Course.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/many2many/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/list/Team.hbm.xml" /> <mapping
+            resource="com/dbs/hibernate/mapping/list/Student.hbm.xml" /> <mapping resource="com/dbs/hibernate/mapping/bag/Team.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/bag/Student.hbm.xml" /> <mapping
+            resource="com/dbs/hibernate/mapping/map/Team.hbm.xml" /> <mapping resource="com/dbs/hibernate/mapping/map/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/set/Team.hbm.xml" /> <mapping
+            resource="com/dbs/hibernate/mapping/set/Student.hbm.xml" /> <mapping resource="com/dbs/hibernate/compositekey/serialize/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/compositekey/keyobject/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/compositecolumn/single/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/compositecolumn/seperate/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/inherit/seperate/Student.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/inherit/seperate/Teacher.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/inherit/single/Person.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/mapping/inherit/join/Person.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/hql/Student.hbm.xml" /> <mapping
+            resource="com/dbs/hibernate/hql/Course.hbm.xml" /> <mapping resource="com/dbs/hibernate/hql/Team.hbm.xml"
+            /> <mapping resource="com/dbs/hibernate/lock/version/Student.hbm.xml" />
+            <mapping resource="com/dbs/hibernate/lock/timestamp/Student.hbm.xml" /> -->
+        <mapping resource="com/dbs/hibernate/cache/ehcache/Student.hbm.xml"/>
+        <mapping resource="com/dbs/hibernate/cache/ehcache/Team.hbm.xml"/>
+
+
+        <event type="load">
+            <listener class="com.dbs.hibernate.interceptor.event.TestLoadListener"/>
+        </event>
+
+        <event type="save">
+            <listener class="com.dbs.hibernate.interceptor.event.TestSaveListener"/>
+        </event>
+    </session-factory>
+</hibernate-configuration>

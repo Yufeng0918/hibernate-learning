@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.dbs.hibernate.mapping.one2one.foreignkey.IdCard"
+           table="idcard" lazy="false">
+        <id name="id" column="id" type="string">
+            <generator class="uuid">
+            </generator>
+        </id>
+        <property name="number" column="number" type="integer"></property>
+        <many-to-one name="student"
+                     class="com.dbs.hibernate.mapping.one2one.foreignkey.Student" column="student_id"
+                     unique="true">
+        </many-to-one>
+    </class>
+</hibernate-mapping>
